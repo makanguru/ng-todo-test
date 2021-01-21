@@ -21,13 +21,12 @@ export class TodoService {
 
   // Toggle Completed
   toggleCompleted = ( todo: Todo ) => {
-//    return this.http.put(url, todo, httpOptions);
+    this.todos =  this.todos.filter(t => t.id !== todo.id)
   }
 
   // Delete Todo
   deleteTodo = ( todo: Todo )=> {
-
-    //return this.http.delete<Todo>(url, httpOptions);
+    this.todos =  this.todos.filter(t => t.id !== todo.id)
   }
 
   // Add Todo
