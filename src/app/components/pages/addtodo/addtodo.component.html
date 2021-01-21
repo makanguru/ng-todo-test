@@ -1,4 +1,4 @@
-<div class="about">
+<div class="adding">
     <h2>Add todo</h2>
     <form class="form" (ngSubmit)="onSubmit()">
       <input type="text" name="title" [(ngModel)]="title"
@@ -6,3 +6,4 @@
       <input type="submit" value="Submit" class="btn"/>
   </form>
 </div>
+<div *ngIf="is_loading" class="lds-ring"><div></div><div></div><div></div><div></div></div>

@@ -28,8 +28,7 @@ export class TodoService {
   }
 
   // Add Todo
-  addTodo = (adding: any ) => {
-
+  addTodo = (adding: any, rand:number ) => {
 
     if (adding) {
       const maxId = this.todos.reduce((max, item) => item.id > max ? item.id : max, 0) + 1;
@@ -38,8 +37,6 @@ export class TodoService {
         title: adding.title,
         completed: adding.completed
       }
-
-      let rand = 5 + Math.random() * 6
 
       setTimeout(() => {
         this.todos.push(todo);

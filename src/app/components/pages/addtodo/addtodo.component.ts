@@ -12,22 +12,23 @@ export class AddtodoComponent implements OnInit {
 
   title!: string;
   todo: Todo[] = [];
+  is_loading = false;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    // this.todoService.getTodo().subscribe( todo => {
-    //   this.todo = todo;
-    // });
+
   }
 
   onSubmit = () => {
+    this.is_loading = true;
     const todo = {
       title : this.title,
       completed : false
     };
-
-    this.todoService.addTodo(todo);
+    let rand = 5 + Math.random() * 6;
+    this.todoService.addTodo(todo, rand);
+    setTimeout(() => this.is_loading = false, Math.round(rand) * 1000)
 
   }
 
