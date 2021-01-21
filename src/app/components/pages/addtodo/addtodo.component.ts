@@ -16,9 +16,9 @@ export class AddtodoComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todoService.getTodo().subscribe( todo => {
-      this.todo = todo;
-    });
+    // this.todoService.getTodo().subscribe( todo => {
+    //   this.todo = todo;
+    // });
   }
 
   onSubmit = () => {
@@ -27,15 +27,7 @@ export class AddtodoComponent implements OnInit {
       completed : false
     };
 
-    this.todoService.addTodo(todo)
-    .subscribe(data => {
-
-    console.log('Вышли из сервиса:', todo)
-      this.todo.push(data);
-
-
-    });
-
+    this.todoService.addTodo(todo);
 
   }
 

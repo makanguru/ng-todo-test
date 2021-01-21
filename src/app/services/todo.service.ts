@@ -3,46 +3,39 @@ import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Todo } from '../models/Todo';
-
-const httpOptions = {
-  headers : new HttpHeaders({
-    'Content-Type' : 'application/json'
-  })
-};
+import { Todo, listTodo } from '../models/Todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  todoUrl = 'https://jsonplaceholder.typicode.com/todos';
-  todoLimit = '?_limit=1000';
 
-  constructor(private http: HttpClient) { }
+  todos = listTodo;
+
+  constructor() { }
 
   // get todo
-  getTodo = (): Observable<Todo[]> => {
-    return this.http.get<Todo[]>
-          (`${this.todoUrl}${this.todoLimit}`);
+  getTodo = ()=> {
+    return this.todos;
   }
 
   // Toggle Completed
-  toggleCompleted = ( todo: Todo ): Observable<any> => {
-    const url = `${this.todoUrl}/${todo.id}`;
-    return this.http.put(url, todo, httpOptions);
+  toggleCompleted = ( todo: Todo ) => {
+//    return this.http.put(url, todo, httpOptions);
   }
 
   // Delete Todo
-  deleteTodo = ( todo: Todo ): Observable<Todo> => {
-    const url = `${this.todoUrl}/${todo.id}`;
-    return this.http.delete<Todo>(url, httpOptions);
+  deleteTodo = ( todo: Todo )=> {
+
+    //return this.http.delete<Todo>(url, httpOptions);
   }
 
   // Add Todo
-  addTodo = (todo: any ): Observable<Todo> => {
-    console.log('Пришли в сервис:', todo)
-    const url = `${this.todoUrl}`;
-    return this.http.post<Todo>(url, todo, httpOptions);
+  addTodo = (todo: any ) => {
+
+    const maxId = this.todos.reduce((max, item) => item.id > max ? item.id : max, 0);
+    return this.todos.push(todo)
+
   }
 
 }
