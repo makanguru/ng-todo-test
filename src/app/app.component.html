@@ -1,0 +1,42 @@
+<h2>Todo application</h2>
+
+<div class="app-container">
+  <nav mat-tab-nav-bar [color]="'primary'" [backgroundColor]="'primary'">
+    <a
+      mat-tab-link
+      #defaultTab
+      routerLink="showTodos"
+      [routerLinkActive]="['is-active']"
+      [active]="activeTab === 1"
+      (click)="activeTab = 1"
+    >
+      Show TODOs</a
+    >
+    <a
+      mat-tab-link
+      routerLink="addTodo"
+      [routerLinkActive]="['is-active']"
+      [active]="activeTab === 2"
+      (click)="activeTab = 2"
+      >Add TODOs</a
+    >
+    <a
+      mat-tab-link
+      routerLink="charts"
+      [routerLinkActive]="['is-active']"
+      [active]="activeTab === 3"
+      (click)="activeTab = 3"
+      >Charts Playground</a
+    >
+    <a
+      mat-tab-link
+      routerLink="grids"
+      [routerLinkActive]="['is-active']"
+      [active]="activeTab === 4"
+      (click)="activeTab = 4"
+      >Grids Playground</a
+    >
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

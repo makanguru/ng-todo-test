@@ -1,0 +1,12 @@
+<h3>Grids Playground:</h3>
+<div class="grids-container">
+  <ag-grid-angular
+    style="width: 80vw; height: 60vh"
+    class="ag-theme-alpine"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+    [pagination]="true"
+    [paginationPageSize]="10"
+  >
+  </ag-grid-angular>
+</div>
