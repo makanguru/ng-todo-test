@@ -1,0 +1,12 @@
+<div class="list-edit">
+    <h3 class="ghost-text" *ngIf="!isLoading && isListNotAvailable()">Select task list to view your tasks</h3>
+    <h3 class="ghost-text" *ngIf="!isLoading && isThereAreNoTasks()">There are no tasks yet</h3>
+    <h3 class="ghost-text flicker" *ngIf="isLoading">Loading...</h3>
+    <div class="tasks-container" [class.hidden]="isThereAreNoTasks()">
+        <app-task *ngFor="let task of getTasks()" [task]="task" (modelUpdated)="modelUpdated($event)"
+            (remove)="taskRemoved($event)"></app-task>
+    </div>
+    <app-new-task-form class="new-task-form-container" *ngIf="isListAvailable()" (taskAdded)="taskAdded($event)"
+        [taskListId]="listId">
+    </app-new-task-form>
+</div>

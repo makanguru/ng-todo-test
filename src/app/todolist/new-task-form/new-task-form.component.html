@@ -1,0 +1,4 @@
+<form (submit)="addTask()" [class.loading]="isLoading">
+    <input type="text" placeholder="Add your task here..." [(ngModel)]="name" name="input-name">
+    <button type="submit">☝️</button>
+</form>

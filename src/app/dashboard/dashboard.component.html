@@ -1,0 +1,13 @@
+<h3 *ngIf="isLoading" class="loading-text">Loading</h3>
+
+<ul *ngIf="!isLoading">
+    <li [routerLink]="['/today']" [routerLinkActive]="['selected']">
+        <p class="name">🗓 Today</p>
+        <p class="counter" *ngIf="dashboard?.todayTasksLeft >= 1">{{dashboard?.todayTasksLeft}}</p>
+    </li>
+    <li *ngFor="let list of dashboard?.taskLists" [routerLink]="['/todo-list', list.id]"
+        [routerLinkActive]="['selected']">
+        <p class="name">{{list.name}}</p>
+        <p class="counter" *ngIf="list.tasksLeftCount >= 1">{{list.tasksLeftCount}}</p>
+    </li>
+</ul>

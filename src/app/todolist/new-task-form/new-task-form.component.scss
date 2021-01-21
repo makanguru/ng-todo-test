@@ -1,0 +1,31 @@
+@import '../../../styles.scss';
+
+
+form {
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    &.loading {
+        animation: flicker 500ms ease-in-out infinite;
+        pointer-events: none;
+    }
+}
+
+input {
+    @extend .form-control;
+    flex-basis: 95%;
+    margin-right: 8px;
+    border-radius: 6px;
+}
+
+button[type="submit"] {
+    @extend .btn, .btn-outline-primary;
+    border-radius: 50%;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+}
+
